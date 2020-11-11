@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public current: number = 35;
+  public max: number = 100;
   public authUser: any;
   public establishments: any;
   constructor(private auth: AuthService) { }

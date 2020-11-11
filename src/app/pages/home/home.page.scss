@@ -1,13 +1,10 @@
 .card-background-page {
 
-    ion-card {
-      position: relative;
-      text-align: center;
-    }
+  text-align: center;
   
     .card-title {
       position: absolute;
-      top: 36%;
+      top: 26%;
       font-size: 2.0em;
       width: 100%;
       font-weight: bold;
@@ -17,15 +14,30 @@
     .card-subtitle {
       font-size: 1.0em;
       position: absolute;
-      top: 52%;
+      top: 42%;
       width: 100%;
       color: #fff;
     }
   
   }
 
+  ion-card-title {
+    background-color: #ffcc66;
+    padding: 1% 2%;
+    border-radius: 10%;
+    color: #fff;
+    width: fit-content;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
   :host {  
     --super-tabs-toolbar-background: #eb445a;
     --st-indicator-color: #fff;
     color: #fff;
+  }
+
+  .checked-in-text {
+    position: absolute;
   }

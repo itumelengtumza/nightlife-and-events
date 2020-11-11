@@ -15,12 +15,39 @@
   </super-tabs-toolbar>
   <super-tabs-container>
     <super-tab>
-      <ion-content class="card-background-page">
-        <ion-card *ngFor="let entry of establishments">
-          <img src="{{entry.image_url}}"/>
-          <div class="card-title">{{entry.name}}</div>
-          <div class="card-subtitle">{{entry.place}}</div>
-        </ion-card>
+      <ion-content>
+        <div>
+          <ion-card *ngFor="let entry of establishments">
+            <div class="card-background-page">
+              <img src="{{entry.image_url}}"/>
+              <div class="card-title">{{entry.name}}</div>
+              <div class="card-subtitle">{{entry.place}}</div>
+              
+            </div>
+            <ion-card-content  class="center">
+              <ion-card-title>
+                9.0
+              </ion-card-title>
+              <ion-row>
+                <ion-col>
+                  <round-progress [current]="current" [radius]="45" [color]="'#ffcc66'" [stroke]="5" [max]="max"
+                  style="width:120px;height: 120px;">
+                  </round-progress>
+                  <span class="checked-in-text">
+                    <p>35%</p> 
+                    <p>Patrons,</p>
+                    <p>Click to<br/> Check-In</p>
+                  </span>
+                </ion-col>
+                <ion-col>
+                  <p>10 km from your position</p>
+                  <p>10 km from your position</p>
+                  <p>10 km from your position</p>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-content>
     </super-tab>
     <super-tab>

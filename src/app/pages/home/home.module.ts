@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SuperTabsModule
+    SuperTabsModule, RoundProgressModule
   ],
   declarations: [HomePage]
 })

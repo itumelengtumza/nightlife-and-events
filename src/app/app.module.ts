@@ -15,7 +15,8 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, SuperTabsModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+     SuperTabsModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
