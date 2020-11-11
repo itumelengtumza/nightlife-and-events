@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<super-tabs color="danger">
+  <super-tabs-toolbar slot="top">
+    <super-tab-button>
+      <ion-label>Clubs And Bars</ion-label>    
+    </super-tab-button>
+    <super-tab-button>
+      <ion-label>Events</ion-label>    
+    </super-tab-button>
+  </super-tabs-toolbar>
+  <super-tabs-container>
+    <super-tab>
+      <ion-content class="card-background-page">
+        <ion-card *ngFor="let entry of establishments">
+          <img src="{{entry.image_url}}"/>
+          <div class="card-title">{{entry.name}}</div>
+          <div class="card-subtitle">{{entry.place}}</div>
+        </ion-card>
+      </ion-content>
+    </super-tab>
+    <super-tab>
+      <ion-content class="card-background-page">
+        <ion-card *ngFor="let entry of establishments">
+          <img src="{{entry.image_url}}"/>
+          <div class="card-title">{{entry.name}}</div>
+          <div class="card-subtitle">{{entry.place}}</div>
+        </ion-card>
+      </ion-content>
+    </super-tab>
+  </super-tabs-container>
+</super-tabs>
+
