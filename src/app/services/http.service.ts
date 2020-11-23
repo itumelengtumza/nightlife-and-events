@@ -21,4 +21,9 @@ export class HttpService {
     const url = environment.apiUrl + serviceName + '.php';
     return this.http.get(url);
   }
+
+  getGoogle(serviceName: string) {
+    const url = environment.googleApi + serviceName;
+    return this.http.get(url);
+  }
 }

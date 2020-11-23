@@ -1,24 +1,44 @@
 .card-background-page {
 
   text-align: center;
+  position: relative;
+
+    img {
+      height:40vh;
+      width: 100%;
+      position: relative;
+    }
   
     .card-title {
       position: absolute;
-      top: 26%;
+      top: 35%;
       font-size: 2.0em;
       width: 100%;
       font-weight: bold;
       color: #fff;
+      z-index: 3;
     }
   
     .card-subtitle {
       font-size: 1.0em;
       position: absolute;
-      top: 42%;
+      top: 50%;
       width: 100%;
       color: #fff;
     }
   
+  }
+  .overlay {
+    position: absolute; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
   }
 
   ion-card-title {
@@ -37,7 +57,30 @@
     --st-indicator-color: #fff;
     color: #fff;
   }
-
-  .checked-in-text {
-    position: absolute;
+  ion-card-content {
+    .checked-in-text {
+      position: absolute;
+    }
+    .proximity-text {
+      padding-top: 10px;
+      
+      font-size: 15px;
+      font-weight: 500;
+      
+    }
+    .quote-text {
+      border: solid 5px rgb(234, 234, 234);;
+      border-radius: 5%;
+      padding: 7px;
+      p:nth-child(3) {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+    .round-border {
+      border-radius: 50%;
+      width:65px;
+      height: 65px;
+   }
   }
+  

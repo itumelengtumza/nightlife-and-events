@@ -21,6 +21,10 @@ const routes: Routes = [
       import('../pages/home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'establishment-details/:id',
+        loadChildren: () => import('../pages/establishment-details/establishment-details.module').then( m => m.EstablishmentDetailsPageModule)
+      },
+      {
       path: 'tools',
       loadChildren: () =>
       import('../pages/tools/tools.module').then(

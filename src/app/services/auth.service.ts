@@ -31,10 +31,17 @@ signup(postData: any): Observable<any> {
 return this.httpService.post('userRegister', postData);
 }
 
+populateEstablishments(postData: any): Observable<any> {
+    return this.httpService.post('populateEstablishments', postData);
+    }
+
 getData(serviceName: string): Observable<any> {
     return this.httpService.get(serviceName);
     }
-
+getGoogleData(serviceName: string): Observable<any> {
+    return this.httpService.getGoogle(serviceName);
+    }
+    
 logout() {
 this.storageService.removeStorageItem(AuthConstants.AUTH).then(res => {
 this.userData$.next('');
