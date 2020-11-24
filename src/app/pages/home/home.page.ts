@@ -9,9 +9,11 @@ import { EstablishmentsRepoService } from 'src/app/services/establishments-repo.
 })
 export class HomePage implements OnInit {
   postData = {
-    photo_ref: '',
+    photos: [],
     name: '',
     address: '',
+    contact_numbers: '',
+    social_media: '',
     type: '',
     place: '',
     city: '',
@@ -20,7 +22,8 @@ export class HomePage implements OnInit {
     current_capacity: 0,
     place_booking_fee: '',
     entry_fee: '',
-    operating_hours: '',
+    operating_hours: [],
+    place_reviews: [],
     rating: '',
     latitude: '',
     longitude: ''
@@ -32,10 +35,8 @@ export class HomePage implements OnInit {
   public place: string = 'Soweto';
   public city: string = 'Johannesburg';
   public province: string = 'Gauteng';
-  public place_id: string = '';
   public googleString: string = 'place/textsearch/json?input=nightclubs+bars+in+'+this.place+'&inputtype=textquery&'
-  +'fields=photos,formatted_address,name,rating,opening_hours,geometry&key=my-key'
-  public placeDetails: string = 'place/details/json?place_id='+this.place_id+'&fields=opening_hours,photos,reviews&key=my-key'
+  +'fields=photos,formatted_address,name,rating,opening_hours,geometry&key=my-key';
   constructor(private auth: AuthService, private estService: EstablishmentsRepoService) { }
 
   ngOnInit() {
@@ -52,36 +53,40 @@ export class HomePage implements OnInit {
             i++;
             continue;
           }
-          console.log(count);
-          this.postData.photo_ref = res.results[i].photos = res.results[i].photos;
-          this.postData.name = res.results[i].name;
-          this.postData.address = res.results[i].formatted_address;
-          this.postData.type = res.results[i].types[0];
-          this.postData.place = this.place;
-          this.postData.city = this.city;
-          this.postData.province = this.province;
-          this.postData.place_capacity = this.getRandomNumberBetween(100,500);
-          this.postData.current_capacity = this.getRandomNumberBetween(30,this.postData.place_capacity);
-          this.postData.place_booking_fee = 'R'+Math.floor(this.getRandomNumberBetween(800,5000) / 10) * 10 ;
-          this.postData. entry_fee = 'R'+Math.floor(this.getRandomNumberBetween(60,120) / 10) * 10 ;
-          this.postData.operating_hours = res.results[i].opening_hours;
-          this.postData.rating = res.results[i].rating;
-          this.postData.latitude = res.results[i].geometry.location.lat;
-          this.postData.longitude = res.results[i].geometry.location.lng;
-          console.log(this.postData);
-          /*
-          this.auth.populateEstablishments(this.postData).subscribe(
-            (res: any) => {
+          //console.log(i);
+            this.auth.getGoogleData('place/details/json?place_id='+res.results[i].place_id+'&key=my-key').subscribe((res:any) => {
               console.log(res);
-              this.auth.getData('getEstablishments').subscribe((res:any) => {
-                this.establishments = res;
-              });
-            },
-            (error: any) => {
-            console.log(error);
-            }
-            );
-          */
+              this.postData.photos = res.result.photos;
+              this.postData.name = res.result.name;
+              this.postData.address = res.result.formatted_address;
+              this.postData.contact_numbers = res.result.formatted_phone_number == undefined ? null : res.result.formatted_phone_number;;
+              this.postData.social_media = res.result.website == undefined ? null : res.result.website;
+              this.postData.type = res.result.types[0];
+              this.postData.place = this.place;
+              this.postData.city = this.city;
+              this.postData.province = this.province;
+              this.postData.place_capacity = this.getRandomNumberBetween(100,500);
+              this.postData.current_capacity = this.getRandomNumberBetween(30,this.postData.place_capacity);
+              this.postData.place_booking_fee = 'R'+Math.floor(this.getRandomNumberBetween(800,5000) / 100) * 100 ;
+              this.postData. entry_fee = 'R'+Math.floor(this.getRandomNumberBetween(60,120) / 10) * 10 ;
+              this.postData.operating_hours = res.result.opening_hours.weekday_text;
+              this.postData.place_reviews = res.result.reviews
+              this.postData.rating = res.result.rating;
+              this.postData.latitude = res.result.geometry.location.lat;
+              this.postData.longitude = res.result.geometry.location.lng;
+              this.auth.populateEstablishments(this.postData).subscribe(
+                (res: any) => {
+                  console.log(res);
+                  this.auth.getData('getEstablishments').subscribe((res:any) => {
+                    this.establishments = res;
+                  });
+                },
+                (error: any) => {
+                  console.log(error);
+                }
+              );
+          });
+          
           i++;
           count++;
         }
