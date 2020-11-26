@@ -9,6 +9,10 @@ import { EstablishmentsRepoService } from 'src/app/services/establishments-repo.
 })
 export class EstablishmentDetailsPage implements OnInit {
 
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
   private establishment;
   constructor(private route: ActivatedRoute, private estService: EstablishmentsRepoService) { }
 
@@ -18,6 +22,10 @@ export class EstablishmentDetailsPage implements OnInit {
   ionViewWillEnter(){
     let establishment_id = this.route.snapshot.paramMap.get('id');
     this.establishment = this.estService.getEstablishments(establishment_id);
+  }
+
+  counter(i: number) {
+    return new Array(Number(i));
   }
 
 }

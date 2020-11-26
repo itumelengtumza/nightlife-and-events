@@ -1,12 +1,98 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons class="absolute-button">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>establishment-details</ion-title>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor='let in of counter(establishment?.images_count) ;let i = index'>
+        <img src="https://jiwemusic.org.za/phpApi/images/establishment/id{{establishment?.establishment_id}}/img_{{i}}.jpg" loading="lazy"/>
+      </ion-slide>
+    </ion-slides>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>{{ establishment?.name }}</p>
+  
+  <div class="content-padding">
+    <div class="name-addr center">
+      <h1>{{ establishment?.name }}</h1>
+      <p>{{establishment?.address}}</p>
+    </div>
+    <div class="other-info">
+      <ion-row>
+        <ion-col>
+          Mobile:
+        </ion-col>
+        <ion-col>
+          <span>{{establishment?.contact_numbers}}</span>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          Place:
+        </ion-col>
+        <ion-col>
+          {{establishment?.place}}
+        </ion-col>
+      </ion-row>   
+      <ion-row>    
+        <ion-col>
+          City:
+        </ion-col>
+        <ion-col>
+          {{establishment?.city}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Province:
+        </ion-col>
+        <ion-col>
+          {{establishment?.province}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Place Capacity:
+        </ion-col>
+        <ion-col>
+          {{establishment?.place_capacity}} Patrons
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Current Capacity:
+        </ion-col>
+        <ion-col>
+          {{establishment?.current_capacity}} Patrons
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Min Entry Fee:
+        </ion-col>
+        <ion-col>
+          {{establishment?.entry_fee}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Min Booking Fee:
+        </ion-col>
+        <ion-col>
+          {{establishment?.place_booking_fee}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Place Type:
+        </ion-col>
+        <ion-col>
+          <!--type=night_club(in database), converting to Night Club-->
+          {{establishment?.type.replace('_', ' ') | titlecase}}
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>
