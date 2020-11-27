@@ -28,10 +28,15 @@
           <!--<ion-card  *ngIf="entry.photos">-->
             <ion-card>
             <div class="card-background-page">
-              <img src="https://jiwemusic.org.za/phpApi/images/establishment/id{{entry.establishment_id}}/img_0.jpg" loading="lazy"/>
-              <div class="overlay"></div>
-              <div class="card-title">{{entry.name}}</div>
-              <div class="card-subtitle">{{entry.address}}</div>
+              <ion-row>
+                <ion-col>
+                  <img src="https://jiwemusic.org.za/phpApi/images/establishment/id{{entry.establishment_id}}/img_0.jpg" loading="lazy"/>
+                  <div class="overlay"></div>
+                  <div class="card-title">{{entry.name}}</div>
+                  <div class="card-subtitle">{{entry.address}}</div>
+                </ion-col>
+              </ion-row>
+                  
             </div>
             
             <ion-card-content  class="center">
@@ -73,10 +78,19 @@
     </super-tab>
     <super-tab>
       <ion-content class="card-background-page">
-        <ion-card *ngFor="let entry of establishments">
-          <img src="{{entry.image_url}}"/>
-          <div class="card-title">{{entry.name}}</div>
-          <div class="card-subtitle">{{entry.place}}</div>
+        <ion-card [routerLink]="'/event-details/' + entry.event_id" detail="true" *ngFor="let entry of estService.events">
+          <ion-row>
+            <ion-col>
+              <img src="https://jiwemusic.org.za/phpApi/images/events/id{{entry.event_id}}/event.jpg" loading="lazy"/>
+              <div class="overlay"></div>
+              <div class="card-title">{{entry.name}}</div>
+              <div class="card-subtitle">
+                <p>{{entry.place}}</p>
+                <p>{{entry.duration}}</p>
+                <p>Entry Fee: {{entry.entry_fee}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-content>
     </super-tab>

@@ -3,28 +3,44 @@
     <ion-buttons class="absolute-button">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-slides pager="true" [options]="slideOpts">
-      <ion-slide *ngFor='let in of counter(establishment?.images_count) ;let i = index'>
-        <img src="https://jiwemusic.org.za/phpApi/images/establishment/id{{establishment?.establishment_id}}/img_{{i}}.jpg" loading="lazy"/>
-        <div class="overlay"></div>
-      </ion-slide>
-    </ion-slides>
-  </ion-toolbar>
+      <img src="https://jiwemusic.org.za/phpApi/images/events/id{{event?.event_id}}/event.jpg" loading="lazy"/>
+      <div class="overlay"></div>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-padding">
     <div class="name-addr center">
-      <h1>{{ establishment?.name }}</h1>
-      <p>{{establishment?.address}}</p>
+      <h1>{{ event?.name }}</h1>
+      <p>{{event?.address}}</p>
+      <p>{{event?.details}}</p>
+      <p>{{event?.duration}}</p>
     </div>
     <div class="other-info">
       <ion-row>
         <ion-col>
-          Mobile:
+          Hosted By:
         </ion-col>
         <ion-col>
-          <span>{{establishment?.contact_numbers}}</span>
+          <span>{{event?.hosted_by}}</span>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          Contact:
+        </ion-col>
+        <ion-col>
+          <span>{{event?.contact_numbers}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          Email:
+        </ion-col>
+        <ion-col>
+          <span>{{event?.email}}</span>
         </ion-col>
       </ion-row>
       
@@ -33,7 +49,7 @@
           Place:
         </ion-col>
         <ion-col>
-          {{establishment?.place}}
+          {{event?.place}}
         </ion-col>
       </ion-row>   
       <ion-row>    
@@ -41,7 +57,7 @@
           City:
         </ion-col>
         <ion-col>
-          {{establishment?.city}}
+          {{event?.city}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -49,23 +65,7 @@
           Province:
         </ion-col>
         <ion-col>
-          {{establishment?.province}}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Place Capacity:
-        </ion-col>
-        <ion-col>
-          {{establishment?.place_capacity}} Patrons
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Current Capacity:
-        </ion-col>
-        <ion-col>
-          {{establishment?.current_capacity}} Patrons
+          {{event?.province}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -73,24 +73,16 @@
           Min Entry Fee:
         </ion-col>
         <ion-col>
-          {{establishment?.entry_fee}}
+          {{event?.entry_fee}}
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          Min Booking Fee:
-        </ion-col>
-        <ion-col>
-          {{establishment?.place_booking_fee}}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Place Type:
+          Event Type:
         </ion-col>
         <ion-col>
           <!--type=night_club(in database), converting to Night Club-->
-          {{establishment?.type.replace('_', ' ') | titlecase}}
+          {{event?.type.replace('_', ' ') | titlecase}}
         </ion-col>
       </ion-row>
     </div>

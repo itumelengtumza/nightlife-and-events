@@ -1,0 +1,43 @@
+.absolute-button {
+    position: absolute;
+    color: rgb(233, 223, 223);
+}
+
+ion-toolbar {
+    position: relative;
+    img {
+        width:100%;
+        object-fit: cover;
+        height: 40vh;
+    }
+    height: 40vh;
+    background-color: #eb445a;
+}
+
+ ion-content {
+    .content-padding {
+        padding:3px 10px;
+        color: #666;
+        .name-addr {
+            
+            border-bottom: solid 1px #666;
+            h1 {
+                //font-size: 20px;
+                font-weight: 700;
+            }
+        }
+        .other-info {
+            margin-top: 10px;
+            padding: 0 15%;
+            
+            ion-row {
+                ion-col {
+                    align-items: stretch;
+                }
+                ion-col:nth-child(even) {
+                    text-align: right;
+                }
+            }
+        }
+    }
+ }
