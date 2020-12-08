@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons class="absolute-button">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="hostess-list"></ion-back-button>
     </ion-buttons>
-      <img onerror="this.src='../assets/images/no-image-placeholder.jpg'" src="https://jiwemusic.org.za/phpApi/images/events/id{{event?.event_id}}/event.jpg" loading="lazy"/>
+      <img onerror="this.src='../assets/images/no-image-placeholder.jpg'" src="https://jiwemusic.org.za/phpApi/images/hostesses/id{{hostess?.hostess_id}}/hostess.jpg" loading="lazy"/>
       <div class="overlay"></div>
     </ion-toolbar>
 </ion-header>
@@ -11,18 +11,17 @@
 <ion-content>
   <div class="content-padding">
     <div class="name-addr center">
-      <h1>{{ event?.name }}</h1>
-      <p>{{event?.address}}</p>
-      <p>{{event?.details}}</p>
-      <p>{{event?.duration}}</p>
+      <h1>{{ hostess?.name }}</h1>
+      <p>{{hostess?.email}}</p>
+      <p>{{hostess?.hostess_id}}</p>
     </div>
-    <div class="other-info">
+    <!--<div class="other-info">
       <ion-row>
         <ion-col>
           Hosted By:
         </ion-col>
         <ion-col>
-          <span>{{event?.hosted_by}}</span>
+          <span>{{hostess?.hosted_by}}</span>
         </ion-col>
       </ion-row>
       
@@ -31,7 +30,7 @@
           Contact:
         </ion-col>
         <ion-col>
-          <span>{{event?.contact_numbers}}</span>
+          <span>{{hostess?.contact_numbers}}</span>
         </ion-col>
       </ion-row>
 
@@ -40,7 +39,7 @@
           Email:
         </ion-col>
         <ion-col>
-          <span>{{event?.email}}</span>
+          <span>{{hostess?.email}}</span>
         </ion-col>
       </ion-row>
       
@@ -49,7 +48,7 @@
           Place:
         </ion-col>
         <ion-col>
-          {{event?.place}}
+          {{hostess?.place}}
         </ion-col>
       </ion-row>   
       <ion-row>    
@@ -57,7 +56,7 @@
           City:
         </ion-col>
         <ion-col>
-          {{event?.city}}
+          {{hostess?.city}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -65,7 +64,7 @@
           Province:
         </ion-col>
         <ion-col>
-          {{event?.province}}
+          {{hostess?.province}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -73,18 +72,17 @@
           Min Entry Fee:
         </ion-col>
         <ion-col>
-          {{event?.entry_fee}}
+          {{hostess?.entry_fee}}
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          Event Type:
+          hostess Type:
         </ion-col>
         <ion-col>
-          <!--type=night_club(in database), converting to Night Club-->
-          {{event?.type.replace('_', ' ') | titlecase}}
+          {{hostess?.type.replace('_', ' ') | titlecase}}
         </ion-col>
       </ion-row>
-    </div>
+    </div>-->
   </div>
 </ion-content>

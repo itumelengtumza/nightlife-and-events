@@ -14,6 +14,8 @@ export class EstablishmentDetailsPage implements OnInit {
     speed: 400
   };
   private establishment;
+  private events;
+  private reviews;
   constructor(private route: ActivatedRoute, private estService: EstablishmentsRepoService) { }
 
   ngOnInit() {
@@ -21,7 +23,10 @@ export class EstablishmentDetailsPage implements OnInit {
 
   ionViewWillEnter(){
     let establishment_id = this.route.snapshot.paramMap.get('id');
-    this.establishment = this.estService.getEstablishments(establishment_id);
+    this.establishment = this.estService.getEstablishment(establishment_id,'establishment_id');
+    this.events = this.estService.getEvents(establishment_id,'establishment_id');
+    this.reviews = this.estService.getReviews(establishment_id,'establishment_id');
+    console.log(this.reviews);
   }
 
   counter(i: number) {

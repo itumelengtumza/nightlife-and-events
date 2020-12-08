@@ -24,53 +24,56 @@
   <super-tabs-container>
     <super-tab>
       <ion-content>
-        <div [routerLink]="'/establishment-details/' + entry.establishment_id" detail="true" *ngFor="let entry of estService.establishments">
+        <div *ngFor="let entry of estService.establishments">
           <!--<ion-card  *ngIf="entry.photos">-->
             <ion-card>
-            <div class="card-background-page">
+            <div [routerLink]="'/establishment-details/' + entry.establishment_id" detail="true" class="card-background-page">
               <ion-row>
                 <ion-col>
-                  <img src="https://jiwemusic.org.za/phpApi/images/establishment/id{{entry.establishment_id}}/img_0.jpg" loading="lazy"/>
+                  <img onerror="this.src='../assets/images/no-image-placeholder.jpg'"  src="https://jiwemusic.org.za/phpApi/images/establishment/id{{entry.establishment_id}}/img_0.jpg" loading="lazy"/>
                   <div class="overlay"></div>
                   <div class="card-title">{{entry.name}}</div>
                   <div class="card-subtitle">{{entry.address}}</div>
+                  <div class="checked-in">
+                    <span>CHECKED IN<br/></span>
+                    <span>{{entry.current_capacity}}</span>
+                    <!--<p>{{entry.checked_in}}</p>-->
+                  </div>
                 </ion-col>
               </ion-row>
                   
             </div>
             
-            <ion-card-content  class="center">
-              <ion-card-title>
-                {{entry.rating | number:'1.1'}}
-              </ion-card-title>
+            <ion-card-content>
               <ion-row>
-                <ion-col>
-                  <round-progress [current]="entry.current_capacity_percentage" [radius]="45" [color]="'#ffcc66'" [stroke]="7" [max]="max"
-                  style="width:65px;height: 65px;">
-                  </round-progress>
-                  <span class="checked-in-text">
-                    <p>{{entry.current_capacity_percentage}}%</p> 
-                    <p>Full</p>
-                  </span>
-                </ion-col>
-                <!--
-                <ion-col>
-                  <div class="quote-text">
-                    <p>Book This Venue</p>
-                    <p>Prices From</p>
-                    <p>R10 000</p>
-                    <p>Get A Quote</p>
+                <ion-col size="2">
+                  <div class="rating">
+                    <p>{{entry.rating | number:'1.1'}}</p>
                   </div>
                 </ion-col>
-                -->
+                  
+                <ion-col> 
+                  <p>SUPERB * 12367</p>
+                </ion-col>
+                
                 <ion-col>
-                  <div class="quote-text round-border">
-                    <p>{{entry.entry_fee}}</p>
-                    <p>Entry</p>
-                  </div>
+                  <p class="text-align-right">Entry Fee: <span class="start-font">R</span><span class="end-font">{{entry.entry_fee}}</span></p>
                 </ion-col>
               </ion-row>
-                <p class="proximity-text">10 km from your current position</p>
+              <ion-row>
+                <ion-col> 
+                  <p>Checked In? {{checked_in[entry.establishment_id]}}</p>
+                </ion-col>
+                <ion-col style="align-items:flex-end;">
+                  <ion-toggle (ionChange)="update($event,entry.establishment_id,entry.current_capacity)"></ion-toggle>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col style="align-items:flex-end;">
+                  <p>10 km from your current position</p>
+                </ion-col>
+              </ion-row>
+                
             </ion-card-content>
           </ion-card>
         </div>
@@ -81,7 +84,7 @@
         <ion-card [routerLink]="'/event-details/' + entry.event_id" detail="true" *ngFor="let entry of estService.events">
           <ion-row>
             <ion-col>
-              <img src="https://jiwemusic.org.za/phpApi/images/events/id{{entry.event_id}}/event.jpg" loading="lazy"/>
+              <img onerror="this.src='../assets/images/no-image-placeholder.jpg'" src="https://jiwemusic.org.za/phpApi/images/events/id{{entry.event_id}}/event.jpg" loading="lazy"/>
               <div class="overlay"></div>
               <div class="card-title">{{entry.name}}</div>
               <div class="card-subtitle">

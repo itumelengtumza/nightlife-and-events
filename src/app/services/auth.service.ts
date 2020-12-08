@@ -34,6 +34,9 @@ return this.httpService.post('userRegister', postData);
 populateEstablishments(postData: any): Observable<any> {
     return this.httpService.post('populateEstablishments', postData);
     }
+registerHostess(postData: any): Observable<any> {
+    return this.httpService.post('registerHostess', postData);
+    }
 populateEvents(postData: any): Observable<any> {
     return this.httpService.post('populateEvents', postData);
     }

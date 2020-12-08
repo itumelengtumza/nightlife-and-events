@@ -17,7 +17,8 @@ export class EventDetailsPage implements OnInit {
 
   ionViewWillEnter(){
     let event_id = this.route.snapshot.paramMap.get('id');
-    this.event = this.estService.getEvents(event_id);
+    this.event = this.estService.getEvent(event_id,'event_id');
+    //console.log(this.estService.getEvents(1,'establishment_id'));
   }
 
   counter(i: number) {

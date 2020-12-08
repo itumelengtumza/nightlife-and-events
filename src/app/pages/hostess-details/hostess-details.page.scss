@@ -1,0 +1,13 @@
+.absolute-button {
+    position: absolute;
+    color: rgb(233, 223, 223);
+}
+
+ion-toolbar {
+    img {
+        width:100%;
+        object-fit: cover;
+        height: 100%;
+        display: block;
+    }
+}
